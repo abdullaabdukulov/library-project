@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Are you sure?{% endblock %}
+
+{% block body %}
+    <h1>Are you sure you want to delete "{{ book.title }}"?</h1>
+    <div class="btn-container">
+        <form action="{% url 'books:delete_book' pk=book.pk %}" method="post">
+            {% csrf_token %}
+            <button class="btn-yes" type="submit">Yes, I'm sure</button>
+        </form>
+        <form action="{% url 'books:book_list' %}">
+            <button class="btn-no">No, take me back</button>
+        </form>
+    </div>
+{% endblock %}

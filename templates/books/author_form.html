@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Author{% endblock %}
+
+{% block body %}
+    <h1>Add Author</h1>
+    <form action="{% url 'books:add_author' %}" method="post" onsubmit="setTimeout(closePopup, 10);">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if book %} Edit Book {% else %}Add book {% endif %}{% endblock %}
+
+{% block body %}
+    <h1>{% if book %} Edit Book {% else %} Add book {% endif %}</h1>
+    <form action="{% if book %} {% url 'books:edit_book' pk=book.pk %} {% else %} {% url 'books:add_book' %} {% endif %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="add-author-link">
+            <a href="{% url 'books:add_author' %}" onclick="openPopup(this.href); return false;">Add new author</a>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Library{% endblock %}
+
+{% block header %}{% include 'header.html' %}{% endblock %}
+
+{% block body %}
+    <a href="{% url 'books:add_book' %}" class="add-book">Add Book</a>
+    <ol>
+        {% for book in books %}
+            <li class="book-list">
+                <div class="book-title"><a href="{% url 'books:book_detail' pk=book.pk %}?from=book_list">{{ book.title }}</a></div>
+                <span class="created-by">Created by: {{ book.created_by.username }}</span>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}

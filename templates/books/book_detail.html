@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+    <p>{{ book.description }}</p>
+    <p><strong>Author:</strong> {{ book.author.name }}</p>
+    <p><strong>Publication Date:</strong> {{ book.published_at }}</p>
+    {% if previous_page == 'book_list' %}
+        <a href="{% url 'books:book_list' %}" class="back-link">Back to Book List</a>
+    {% elif previous_page == 'my_books' %}
+        <a href="{% url 'books:my_books' %}" class="back-link">Back to My Books</a>
+    {% else %}
+        <a href="{% url 'books:book_list' %}" class="back-link">Back to Book List</a>
+    {% endif %}
+{% endblock %}

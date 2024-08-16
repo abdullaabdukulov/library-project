@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        {% if request.path == '/my-books/' %}
+            <a class="navbar-brand" href="{% url 'books:my_books' %}">My Books</a>
+        {% else %}
+            <a class="navbar-brand" href="/">Welcome, {{ user.username }}</a>
+        {% endif %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item {% if request.path == '/my-books/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'books:my_books' %}">My books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
